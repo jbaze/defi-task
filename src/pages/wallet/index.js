@@ -335,18 +335,6 @@ function Wallet() {
                         </div>
                     </div>
 
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="alert alert-info">
-                                <strong>💡 Having connection issues?</strong><br />
-                                If you see CORS errors, you need to run this file through a local server:<br />
-                                <strong>Python:</strong> <code>python -m http.server 8000</code><br />
-                                <strong>Node.js:</strong> <code>npx http-server</code><br />
-                                Then open: <code>http://localhost:8000</code>
-                            </div>
-                        </div>
-                    </div>
-
                     {!account ? (
                         <div id="setup-section">
                             <div className="row">
@@ -499,6 +487,18 @@ function Wallet() {
                             </div>
                         </div>
                     )}
+
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="alert alert-info connection-info">
+                                <strong>💡 Having connection issues?</strong><br />
+                                If you see CORS errors, you need to run this file through a local server:<br />
+                                <strong>Python:</strong> <code>python -m http.server 8000</code><br />
+                                <strong>Node.js:</strong> <code>npx http-server</code><br />
+                                Then open: <code>http://localhost:8000</code>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
