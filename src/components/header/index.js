@@ -45,6 +45,9 @@ function Header() {
                         <li className="nav-item">
                             <a className="nav-link" href="contact">Contact</a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="wallet">Wallet</a>
+                        </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
                         <div className="search_bt">
