@@ -319,133 +319,184 @@ function Wallet() {
                 <Header />
             </div>
 
-            <div className="wallet-page-wrapper">
-                <div id="toast-container" className="toast-container"></div>
+            <div id="toast-container" className="toast-container"></div>
 
-                <div className="wallet-container">
-                    <h1>🔐 Standalone ETH Wallet</h1>
-                    <p className="subtitle">No browser extension required</p>
-                    <div className="testnet-badge">⚠️ Sepolia Testnet</div>
+            <div className="wallet_section layout_padding">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="wallet_main">
+                                <hr className="border" />
+                                <h1 className="wallet_taital">ETH Wallet</h1>
+                                <hr className="border" />
+                            </div>
+                            <p className="wallet_subtitle">Manage your Ethereum on Sepolia Testnet</p>
+                            <div className="testnet-badge">⚠️ Sepolia Testnet</div>
+                        </div>
+                    </div>
 
-                    <div className="alert alert-info">
-                        <strong>💡 Having connection issues?</strong><br />
-                        If you see CORS errors, you need to run this file through a local server:<br />
-                        <strong>Python:</strong> <code>python -m http.server 8000</code><br />
-                        <strong>Node.js:</strong> <code>npx http-server</code><br />
-                        Then open: <code>http://localhost:8000</code>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="alert alert-info">
+                                <strong>💡 Having connection issues?</strong><br />
+                                If you see CORS errors, you need to run this file through a local server:<br />
+                                <strong>Python:</strong> <code>python -m http.server 8000</code><br />
+                                <strong>Node.js:</strong> <code>npx http-server</code><br />
+                                Then open: <code>http://localhost:8000</code>
+                            </div>
+                        </div>
                     </div>
 
                     {!account ? (
                         <div id="setup-section">
-                            <div className="warning-box">
-                                <h3>⚠️ Security Warning</h3>
-                                <p>This wallet stores your private key in browser memory. For testing purposes only! Never use with real ETH on mainnet. Always keep your private key secure and never share it.</p>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="warning-box">
+                                        <h3>⚠️ Security Warning</h3>
+                                        <p>This wallet stores your private key in browser memory. For testing purposes only! Never use with real ETH on mainnet. Always keep your private key secure and never share it.</p>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="tabs">
-                                <button
-                                    className={`tab ${currentTab === 'create' ? 'active' : ''}`}
-                                    onClick={() => setCurrentTab('create')}
-                                >
-                                    Create New Wallet
-                                </button>
-                                <button
-                                    className={`tab ${currentTab === 'import' ? 'active' : ''}`}
-                                    onClick={() => setCurrentTab('import')}
-                                >
-                                    Import Wallet
-                                </button>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="tabs">
+                                        <button
+                                            className={`tab ${currentTab === 'create' ? 'active' : ''}`}
+                                            onClick={() => setCurrentTab('create')}
+                                        >
+                                            Create New Wallet
+                                        </button>
+                                        <button
+                                            className={`tab ${currentTab === 'import' ? 'active' : ''}`}
+                                            onClick={() => setCurrentTab('import')}
+                                        >
+                                            Import Wallet
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
                             {currentTab === 'create' ? (
-                                <div id="create-tab">
-                                    <button className="btn btn-primary" onClick={createWallet} disabled={!isWeb3Loaded}>
-                                        🆕 Generate New Wallet
-                                    </button>
+                                <div id="create-tab" className="row">
+                                    <div className="col-md-12">
+                                        <div className="wallet-action-btn">
+                                            <button className="wallet-btn wallet-btn-primary" onClick={createWallet} disabled={!isWeb3Loaded}>
+                                                🆕 Generate New Wallet
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             ) : (
-                                <div id="import-tab">
-                                    <div className="input-group">
-                                        <label>Private Key (64 characters, no 0x prefix)</label>
-                                        <input
-                                            type="password"
-                                            value={importPrivateKey}
-                                            onChange={(e) => setImportPrivateKey(e.target.value)}
-                                            placeholder="Enter your private key"
-                                        />
+                                <div id="import-tab" className="row">
+                                    <div className="col-md-12">
+                                        <div className="input-group">
+                                            <label>Private Key (64 characters, no 0x prefix)</label>
+                                            <input
+                                                type="password"
+                                                className="wallet-input"
+                                                value={importPrivateKey}
+                                                onChange={(e) => setImportPrivateKey(e.target.value)}
+                                                placeholder="Enter your private key"
+                                            />
+                                        </div>
+                                        <div className="wallet-action-btn">
+                                            <button className="wallet-btn wallet-btn-primary" onClick={importWallet} disabled={!isWeb3Loaded}>
+                                                📥 Import Wallet
+                                            </button>
+                                        </div>
                                     </div>
-                                    <button className="btn btn-primary" onClick={importWallet} disabled={!isWeb3Loaded}>
-                                        📥 Import Wallet
-                                    </button>
                                 </div>
                             )}
                         </div>
                     ) : (
                         <div id="wallet-section">
-                            <div className="wallet-info">
-                                <div className="wallet-item">
-                                    <label>Your Address</label>
-                                    <div className="wallet-value">{account.address}</div>
-                                    <button className="copy-btn" onClick={copyAddress}>Copy Address</button>
-                                </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="wallet-info">
+                                        <div className="wallet-item">
+                                            <label>Your Address</label>
+                                            <div className="wallet-value">{account.address}</div>
+                                            <button className="copy-btn" onClick={copyAddress}>Copy Address</button>
+                                        </div>
 
-                                <div className="wallet-item">
-                                    <label>Private Key (Keep Secret!)</label>
-                                    <div
-                                        className="wallet-value"
-                                        style={{ filter: privateKeyRevealed ? 'none' : 'blur(5px)' }}
-                                    >
-                                        {account.privateKey}
+                                        <div className="wallet-item">
+                                            <label>Private Key (Keep Secret!)</label>
+                                            <div
+                                                className="wallet-value"
+                                                style={{ filter: privateKeyRevealed ? 'none' : 'blur(5px)' }}
+                                            >
+                                                {account.privateKey}
+                                            </div>
+                                            <button className="copy-btn" onClick={togglePrivateKey}>
+                                                {privateKeyRevealed ? 'Hide' : 'Show'}
+                                            </button>
+                                            <button className="copy-btn" onClick={copyPrivateKey}>Copy</button>
+                                        </div>
+
+                                        <div className="balance">
+                                            {balance} ETH
+                                            <span className="auto-refresh-indicator" title="Auto-refreshing every 10 seconds"></span>
+                                        </div>
                                     </div>
-                                    <button className="copy-btn" onClick={togglePrivateKey}>
-                                        {privateKeyRevealed ? 'Hide' : 'Show'}
-                                    </button>
-                                    <button className="copy-btn" onClick={copyPrivateKey}>Copy</button>
-                                </div>
-
-                                <div className="balance">
-                                    {balance} ETH
-                                    <span className="auto-refresh-indicator" title="Auto-refreshing every 10 seconds"></span>
                                 </div>
                             </div>
 
-                            <div className="section">
-                                <h3>📤 Send ETH</h3>
-                                <div className="input-group">
-                                    <label>Recipient Address</label>
-                                    <input
-                                        type="text"
-                                        value={recipientAddress}
-                                        onChange={(e) => setRecipientAddress(e.target.value)}
-                                        placeholder="0x..."
-                                    />
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="send-section">
+                                        <h3 className="send-title">📤 Send ETH</h3>
+                                        <div className="input-group">
+                                            <label>Recipient Address</label>
+                                            <input
+                                                type="text"
+                                                className="wallet-input"
+                                                value={recipientAddress}
+                                                onChange={(e) => setRecipientAddress(e.target.value)}
+                                                placeholder="0x..."
+                                            />
+                                        </div>
+                                        <div className="input-group">
+                                            <label>Amount (ETH)</label>
+                                            <input
+                                                type="number"
+                                                className="wallet-input"
+                                                value={sendAmount}
+                                                onChange={(e) => setSendAmount(e.target.value)}
+                                                placeholder="0.01"
+                                                step="0.001"
+                                                min="0"
+                                            />
+                                        </div>
+                                        <div className="wallet-action-btn">
+                                            <button className="wallet-btn wallet-btn-primary" onClick={sendTransaction}>Send ETH</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="input-group">
-                                    <label>Amount (ETH)</label>
-                                    <input
-                                        type="number"
-                                        value={sendAmount}
-                                        onChange={(e) => setSendAmount(e.target.value)}
-                                        placeholder="0.01"
-                                        step="0.001"
-                                        min="0"
-                                    />
-                                </div>
-                                <button className="btn btn-primary" onClick={sendTransaction}>Send ETH</button>
                             </div>
 
-                            <div className="faucet-links">
-                                <h3>🚰 Get Free Test ETH</h3>
-                                <p style={{ marginBottom: '10px', fontSize: '0.9em' }}>Copy your address above and use these faucets:</p>
-                                <a href="https://www.alchemy.com/faucets/ethereum-sepolia" target="_blank" rel="noopener noreferrer">Alchemy Sepolia Faucet</a>
-                                <a href="https://sepoliafaucet.com/" target="_blank" rel="noopener noreferrer">Sepolia Faucet</a>
-                                <a href="https://www.infura.io/faucet/sepolia" target="_blank" rel="noopener noreferrer">Infura Sepolia Faucet</a>
-                                <a href="https://faucet.quicknode.com/ethereum/sepolia" target="_blank" rel="noopener noreferrer">QuickNode Faucet</a>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="faucet-links">
+                                        <h3>🚰 Get Free Test ETH</h3>
+                                        <p className="faucet-description">Copy your address above and use these faucets:</p>
+                                        <a href="https://www.alchemy.com/faucets/ethereum-sepolia" target="_blank" rel="noopener noreferrer">Alchemy Sepolia Faucet</a>
+                                        <a href="https://sepoliafaucet.com/" target="_blank" rel="noopener noreferrer">Sepolia Faucet</a>
+                                        <a href="https://www.infura.io/faucet/sepolia" target="_blank" rel="noopener noreferrer">Infura Sepolia Faucet</a>
+                                        <a href="https://faucet.quicknode.com/ethereum/sepolia" target="_blank" rel="noopener noreferrer">QuickNode Faucet</a>
+                                    </div>
+                                </div>
                             </div>
 
-                            <button className="btn btn-danger" onClick={logout} style={{ marginTop: '20px' }}>
-                                🚪 Logout
-                            </button>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="wallet-action-btn">
+                                        <button className="wallet-btn wallet-btn-danger" onClick={logout}>
+                                            🚪 Logout
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>
