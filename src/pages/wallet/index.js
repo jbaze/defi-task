@@ -319,8 +319,6 @@ function Wallet() {
                 <Header />
             </div>
 
-            <div id="toast-container" className="toast-container"></div>
-
             <div className="wallet_section layout_padding">
                 <div className="container">
                     <div className="row">
@@ -503,6 +501,9 @@ function Wallet() {
             </div>
 
             <Footer />
+
+            {/* Toast Notification Container - Must be at document level */}
+            <div id="toast-container" className="toast-container"></div>
         </div>
     );
 }
