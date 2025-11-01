@@ -335,12 +335,13 @@
     pointer-events: none;
 }
 
-.toast {
+/* Override Bootstrap's .toast:not(.show) { display: none } rule */
+.toast-container .toast {
+    display: flex !important;
     background: white;
     padding: 16px 20px;
     border-radius: 10px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-    display: flex;
     align-items: center;
     gap: 12px;
     animation: slideIn 0.3s ease-out;
