@@ -37,7 +37,7 @@ function Wallet() {
         if (!toastContainer) return;
 
         const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
+        toast.className = `toast ${type} show`;
 
         const icons = {
             success: '✅',
